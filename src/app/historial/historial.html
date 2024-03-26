@@ -1,0 +1,17 @@
+<nav-user [usuario]="Usuario"></nav-user>
+  <header>
+    <h1>Historial</h1>
+  </header>
+  <div class="history-container">
+    <ul class="history-list">
+      <div>
+        <h2 style="text-decoration: blue;">Historial de canciones <img src="https://i.imgur.com/FDaAvqr.png" alt="Tempoplay" width="100" height="100"></h2>
+      </div>
+      <li *ngFor="let historial of ListaHistorial">
+        <h6>{{ historial.NombreCancion }}</h6>
+        <div class="history-details">
+          Cancion reproducida en la fecha del {{ historial.FechaReproduccion }}
+        </div>
+      </li>
+    </ul>
+  </div>

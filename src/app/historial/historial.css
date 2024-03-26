@@ -1,0 +1,48 @@
+/* Encabezado */
+header {
+    background-color: #0f67ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  /* Contenedor del historial */
+  .history-container {
+    margin: 20px;
+  }
+
+  /* Lista de elementos de historial */
+  .history-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .history-list li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .history-list li:last-child {
+    border-bottom: none;
+  }
+
+  .history-list li a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  /* Estilos para los detalles del historial */
+  .history-details {
+    margin-top: 10px;
+    color: #666;
+  }
+
+  .history-details span {
+    font-weight: bold;
+  }

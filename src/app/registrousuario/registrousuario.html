@@ -1,0 +1,23 @@
+<div class="body" style="height: 648px;">
+    <br>
+    <br>
+  <br>
+  <div>
+      <h1 style="text-align: center; color: white;">Registro de usuario</h1>
+  </div>
+  <br>
+  <div>
+    <h4 style="text-align: center; color: white;">Ingresa tu nombre de usuario, correo electrónico y contraseña</h4>
+  </div>
+  <div class="formulario">
+      <input class="controls" type="text" name="nombreusuario" id="nombreusuario" placeholder="Ingrese su nombre de usuario" [(ngModel)]="NuevoUsuario.NombreUsuario">
+      <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo electrónico" [(ngModel)]="NuevoUsuario.Correo">
+      <input class="controls" type="password" name="contra" id="contra" placeholder="Ingrese su contraseña" [(ngModel)]="NuevoUsuario.Contra">
+  </div>
+  <br><br>
+  <div style="text-align: center;">
+    <button style="background-color: red; color: white;" (click)="registrar()" type="password" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <h5> Registrarse </h5>
+</button>
+  </div>  
+  </div>

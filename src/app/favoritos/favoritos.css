@@ -1,0 +1,47 @@
+header {
+    background-color: #0f67ff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  /* Contenedor del historial */
+  .favorites-container {
+    margin: 20px;
+  }
+
+  /* Lista de elementos de historial */
+  .favorites-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .favorites-list li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .favorites-list li:last-child {
+    border-bottom: none;
+  }
+
+  .favorites-list li a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  /* Estilos para los detalles del historial */
+  .favorites-details {
+    margin-top: 10px;
+    color: #666;
+  }
+
+  .favorites-details span {
+    font-weight: bold;
+  }

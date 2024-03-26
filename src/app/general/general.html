@@ -1,0 +1,105 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reproductor de Música</title>
+  <style>
+    /* Estilos CSS para la página */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(183, 215, 255);
+    }
+
+    #reproductor {
+      width: 500px;
+      margin: 50px auto;
+      margin-bottom: 60px;
+      padding: 20px;
+      background-color:#2b2929;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+      border-radius: 10px;
+      box-shadow: 0 0 20px #e600ff,
+                  0 0 30px #00ff00,
+                  0 0 40px #00e5ff,
+                  0 0 50px #00e5ff;
+                  animation: animacion-neon 2s linear infinite;
+    }
+    @keyframes animacion-neon {
+      0% {
+        box-shadow: 0 0 5px #00fff7,
+                    0 0 20px #00ff00,
+                    0 0 30px #00fff7,
+                    0 0 40px #00ff00;
+      }
+      50% {
+        box-shadow: 0 0 20px #ff00d4,
+                    0 0 30px #fe0000,
+                    0 0 40px #ff9500,
+                    0 0 60px #ff0000;
+      }
+      100% {
+        box-shadow: 0 0 5px #e600ff,
+                    0 0 20px #ffff00,
+                    0 0 30px #e600ff,
+                    0 0 40px #ffff00;
+      }
+    }
+    h1 {
+      text-align: center;
+      color: #fff7f7;
+    }
+
+    p {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color:  rgb(51, 46, 46);
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <nav-user [usuario]="Usuario"></nav-user>
+  <div id="reproductor">
+    <h1>Reproductor de Música</h1>
+    <div>
+      <img style="height: 350px; width: 350px; margin-left: 50px;" src="https://i.imgur.com/FDaAvqr.png" alt="">
+      <div style="height: 5px; width: 100px; color: #ffffff;"></div>
+    </div>
+    <div> <hr style="height: 2px;"></div>
+    <p>Bienvenido a Tempoplay. ¡Disfruta de tu música favorita!</p>
+  </div>
+
+  <section class="trending">
+  <br>
+  <h1 style="text-align: center; color: black; font-weight: bold;">Novedades</h1>
+  <h3 style="text-align: center;">Descubre la novedad de canciones que hay en el mundo de la música</h3>
+  <div class="container">
+    <div class="card" *ngFor="let cancion of cancionesAleatorias" style="background-color: orange">
+        <br>
+        <img [src]="cancion.FotoCancion" style="width: 65%; height: 45%;">
+        <br>
+        <p style="color: black; font-weight: bold;">{{cancion.NombreCancion}}</p>
+        <p style="color: black;">{{cancion.NombreArtista}}</p>
+        <p style="color: black;">{{cancion.NombreAlbum}}</p>
+        <button class="btn btn-primary" (click)="historial(cancion)" (click)="reproducir(cancion)"><i class="bi bi-play-circle"></i> Escuchar</button>
+    </div>
+  </div>
+  <br>
+  </section>
+</body>
+</html>

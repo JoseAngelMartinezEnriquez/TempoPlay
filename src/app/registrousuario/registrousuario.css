@@ -1,0 +1,32 @@
+.body{
+    background: url(https://fondosmil.com/fondo/20815.jpg);
+    height: auto; 
+}
+
+.formulario{
+    width: 40%;
+    height: auto;
+    background-color: rgb(255, 60, 60);
+    padding: 30px;
+    margin-left: 30%;
+    margin-top: 25px;
+    border-radius: 4px;
+    color: white;
+}
+
+.formulario h4{
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.controls{
+    width: 100%;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid black;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+}

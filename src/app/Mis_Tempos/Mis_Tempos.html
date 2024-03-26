@@ -1,0 +1,177 @@
+<nav-user [usuario]="Usuario"></nav-user>
+<div style="background-color: rgb(252, 246, 232); height: 2000px;">
+<br>
+<h1 style="color:rgb(30, 90, 231); text-align: center;" class="titulo">Tus Tempos</h1>
+<style>
+    .titulos{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        box-shadow: 0 0 80px #e600ff,
+                      0 0 30px #005eff,
+                      0 0 60px #04ff00,
+                      0 0 100px #00ff00;
+                      animation: animacion-neon 2s linear infinite;
+                      }
+</style>
+<br>
+<div style="text-align: center;">
+    <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>  Crear tu Tempo
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Crea tu propio Tempo</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Nombre del Tempo:</label>
+                  <input type="text" class="form-control" name="Nombre_Tempo" id="Nombre_Tempo" placeholder="Nombre del Tempo" [(ngModel)]="misTempos.NombreLista">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Descripción:</label>
+                  <input type="text" class="form-control" name="Descripcion" id="Descripcion" placeholder="Descripción" [(ngModel)]="misTempos.Descripcion">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+              <button type="button" class="btn btn-primary" (click)="generarMisTempos()">Crear Tempo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="container">
+    <ng-container *ngFor="let row of ListaMisTempos">
+        <div class="card">
+            <img src="https://png.pngtree.com/element_our/png_detail/20181010/play-list-icon-logo-png_125603.jpg">
+            <h4>{{row.NombreLista}}</h4>
+            <p><b>Creado por:</b> {{row.NombreUsuario}}</p>
+            <p><b>Descripción:</b> {{row.Descripcion}}</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal1" (click)="mostrarcancionesTempo(row)">
+                <i class="bi bi-list-task"></i> Ver lista de canciones
+            </button>
+            <br>
+            <div class="modal fade" id="modal1" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Lista de canciones</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="background-color: black;">
+                            <div class="row">
+                                <div class="col-md-12" style="color: white;">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Nombre</th>
+                                                <th>Artista</th>
+                                                <th>Álbum</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let cancionestem of CancionesTempo">
+                                                <td><button type="button" class="btn btn-primary btn-sm" (click)="reproducir(cancionestem)"><i class="bi bi-play-fill"></i> Reproducir</button></td>
+                                                <td>{{ cancionestem.NombreCancion }}</td>
+                                                <td>{{ cancionestem.NombreArtista }}</td>
+                                                <td>{{ cancionestem.NombreAlbum }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal10" (click)="traercanciones();">
+                <i class="bi bi-plus-circle"></i> Agrega canciones a tu Tempo
+            </button>
+            <div class="modal fade" id="exampleModal10" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Agregar canción</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="background-color: black;">
+                            <div class="row">
+                                <div class="col-md-12" style="color: white;">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th>Foto</th>
+                                                <th>Nombre</th>
+                                                <th>Artista</th>
+                                                <th>Álbum</th>
+                                                <th>Fecha</th>
+                                                <th>Duración</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let cancion of Canciones">
+                                                <td><button type="button" class="btn btn-primary btn-sm" (click)="agregaraTempo(cancion)">Agregar</button></td>
+                                                <td><button type="button" class="btn btn-primary btn-sm" (click)="darLike(cancion)">Dar like</button></td>
+                                                <td><img [src]="cancion.FotoCancion" alt="Canción" style="width: 40px; height: 35px;"></td>
+                                                <td>{{ cancion.NombreCancion }}</td>
+                                                <td>{{ cancion.NombreArtista }}</td>
+                                                <td>{{ cancion.NombreAlbum }}</td>
+                                                <td>{{ cancion.FechaCancion }}</td>
+                                                <td>{{ cancion.Duracion }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<!--<div class="col-sm-4">
+    <input type="file" id="archivo" class="form-control">
+</div>
+<br>
+<div class="col-sm-4">
+    <button type="button" class="btn btn-primary" (click)="guardarArchivo()">Subir archivo</button>
+</div>
+<br>
+<div>
+    <img id="ejemplo" src="" alt="">
+</div>-->
+
+<style>
+    .kodfun-galeri{
+        display: flex;
+        height: 20rem;
+        gap: 1rem;
+    }
+    .kodfun-galeri > div{
+        flex: 1;
+        border-radius: 1rem;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        transition: all .8s cubic-bezier(.25,.4,.45,1.4);
+    }
+    .kodfun-galeri > div:hover{
+        flex: 5;
+    }
+</style>
+</div>
